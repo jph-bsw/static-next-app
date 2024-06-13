@@ -9,7 +9,7 @@ Wichtig in der [next.config.mjs](next.config.mjs) sind:
 
 ## Base-URL
 
-Ich habe in [next.config.mjs](next.config.mjs) noch `basePath: "/projects-temp/static-next-app/out"` und in [layout.tsx](app/[lang]/layout.tsx) noch das gesetzt:
+Ich habe in [next.config.mjs](next.config.mjs) noch `basePath: "/projects/static-next-app/out"` und in [layout.tsx](app/[lang]/layout.tsx) noch das gesetzt:
 
 ```jsx
 <head>

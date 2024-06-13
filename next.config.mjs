@@ -1,4 +1,8 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+    output: "export",
+    trailingSlash: true,
+    basePath: "/projects-temp/static-next-app/out"
+}
 
-export default nextConfig;
+export default nextConfig

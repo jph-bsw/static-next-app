@@ -1,36 +1,28 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Statische Next.js mit Lokalisierung
 
-## Getting Started
+Einfaches Beispiel zur Nutzung von Next.js als SSG und mit Unterstützung mehrerer Sprachen.
 
-First, run the development server:
+Wichtig in der [next.config.mjs](next.config.mjs) sind:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+-   `output: "export"`, damit statische Assets erzeugt werden
+-   `trailingSlash: true`, damit für jede Route ein Ordner mit `index.html` erzeugt wird (`[lang]/about` ➡️ `out/en/about/index.html`, etc.)
+
+## Base-URL
+
+Ich habe in [next.config.mjs](next.config.mjs) noch `basePath: "/projects-temp/static-next-app/out"` und in [layout.tsx](app/[lang]/layout.tsx) noch das gesetzt:
+
+```jsx
+<head>
+    <base href={`${nextConfig.basePath}/`} />
+</head>
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Das ist nötig, wenn die Site produktiv in einem Unterordner (z.B. "https://example.com/mysite/") gehostet wird. Wenn sie im Root ("https://example.com/") gehostet wird, können diese Stellen entfernt werden.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Funktioniert nur, wenn alle Links relativ sind!
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Weiterleitung für Lokalisierung
 
-## Learn More
+Serverseitig, z.B. durch PHP oder `.htaccess` kann eine Umleitung je nach Spracheinstellung des Users stattfinden.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Und mittels einer 404-Seite könnte man noch umsetzen, dass beispielsweise **/about** nach **/de/about** geleitet wird.

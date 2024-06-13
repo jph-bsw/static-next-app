@@ -21,8 +21,8 @@ Das ist nötig, wenn die Site produktiv in einem Unterordner (z.B. "https://exam
 
 Funktioniert nur, wenn alle Links relativ sind!
 
-## Weiterleitung für Lokalisierung
+## Vorbereitung für PHP
 
-Serverseitig, z.B. durch PHP oder `.htaccess` kann eine Umleitung je nach Spracheinstellung des Users stattfinden.
-
-Und mittels einer 404-Seite könnte man noch umsetzen, dass beispielsweise **/about** nach **/de/about** geleitet wird.
+In [custom-scripts/prepare-php.mjs](custom-scripts/prepare-php.mjs) befindet sich Code, der eine [index.php](public/index.php) und [.htaccess](public/.htaccess) generiert. Das Script wird mit `npm run build` vor `next build` ausgeführt.
+Die generierten Dateien sorgen auf Servern mit PHP dafür, dass User automatisch beispielsweise nach **/en** oder **/de** umgeleitet werden. Auch Unterpfade werden umgeleitet, also z.B. **/about** nach **/en/about**. Die verfügbaren Sprachen werden aus [lib/translations.ts](lib/translations.ts) entnommen.
+Das Script nutzt auch den `basePath` aus [next.config.mjs](next.config.mjs).

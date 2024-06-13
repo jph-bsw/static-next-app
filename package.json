@@ -4,7 +4,8 @@
     "private": true,
     "scripts": {
         "dev": "next dev",
-        "build": "next build",
+        "prepare-php": "node custom-scripts/prepare-php.mjs",
+        "build": "npm run prepare-php && next build",
         "start": "next start",
         "lint": "next lint"
     },
@@ -17,6 +18,7 @@
         "@types/node": "^20",
         "@types/react": "^18",
         "@types/react-dom": "^18",
+        "dotenv": "^16.4.5",
         "eslint": "^8",
         "eslint-config-next": "14.2.4",
         "postcss": "^8",

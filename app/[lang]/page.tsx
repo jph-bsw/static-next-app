@@ -1,3 +1,4 @@
+import { Navbar } from "@/components/navbar"
 import { Language, getPhrase } from "@/lib/translations"
 import dynamic from "next/dynamic"
 
@@ -8,16 +9,14 @@ const LanguageSwitch = dynamic(() => import("@/components/language-switch"), {
 export default function HomeLang({ params }: { params: { lang: Language } }) {
     return (
         <>
-            <LanguageSwitch />
-
-            <div className="container mx-auto">
-                <h1 className="page-header">
-                    {getPhrase("HELLO_WORLD", params.lang)}, {params.lang}
-                </h1>
-
-                <a href="/about" className="link">
-                    About
-                </a>
+            <div>
+                <Navbar />
+                <div className="flex justify-center pt-48">
+                    <h1 className="text-4xl">
+                        Static site with Next.js, Localization, tailwindcss and
+                        shadcn 🎨
+                    </h1>
+                </div>
             </div>
         </>
     )

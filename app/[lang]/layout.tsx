@@ -3,6 +3,7 @@ import { Inter } from "next/font/google"
 import "./globals.css"
 import { Language, languages } from "@/lib/translations"
 import nextConfig from "@/next.config.mjs"
+import { ThemeProvider } from "@/components/theme-provider"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -27,25 +28,15 @@ export default function RootLayout({
             <head>
                 <base href={`${nextConfig.basePath}/`} />
             </head>
-            <body
-                className={
-                    inter.className +
-                    "bg-slate-50 px-4 text-black dark:bg-slate-700 dark:text-white"
-                }
-            >
-                <header>
-                    <nav>
-                        <ul>
-                            <li>
-                                <a href=".">Home</a>
-                            </li>
-                            <li>
-                                <a href="about">About</a>
-                            </li>
-                        </ul>
-                    </nav>
-                </header>
-                {children}
+            <body className={inter.className}>
+                <ThemeProvider
+                    attribute="class"
+                    defaultTheme="system"
+                    enableSystem
+                    disableTransitionOnChange
+                >
+                    {children}
+                </ThemeProvider>
             </body>
         </html>
     )

@@ -23,13 +23,13 @@ export default function LanguageSwitch() {
                 So you should go here
             </a>
 
-            <a href="en" className="underline">
+            <a href="/en" className="underline">
                 English
             </a>
-            <a href="de" className="underline">
+            <a href="/de" className="underline">
                 Deutsch
             </a>
-            <a href="fr" className="underline">
+            <a href="/fr" className="underline">
                 Français
             </a>
         </div>

@@ -27,7 +27,12 @@ export default function RootLayout({
             <head>
                 <base href={`${nextConfig.basePath}/`} />
             </head>
-            <body className={inter.className}>
+            <body
+                className={
+                    inter.className +
+                    "bg-slate-50 px-4 text-black dark:bg-slate-700 dark:text-white"
+                }
+            >
                 <header>
                     <nav>
                         <ul>

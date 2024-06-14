@@ -10,12 +10,12 @@ export default function HomeLang({ params }: { params: { lang: Language } }) {
         <>
             <LanguageSwitch />
 
-            <div className="container mx-auto px-4">
+            <div className="container mx-auto">
                 <h1 className="page-header">
                     {getPhrase("HELLO_WORLD", params.lang)}, {params.lang}
                 </h1>
 
-                <a href="about" className="link">
+                <a href="/about" className="link">
                     About
                 </a>
             </div>

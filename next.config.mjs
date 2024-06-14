@@ -5,10 +5,7 @@ dotenv.config()
 const nextConfig = {
     output: "export",
     trailingSlash: true,
-    basePath:
-        process.env.NODE_ENV === "production"
-            ? "/projects/static-next-app/out"
-            : ""
+    basePath: ""
 }
 
 export default nextConfig
